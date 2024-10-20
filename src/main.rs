@@ -1,72 +1,97 @@
-use ggez::{Context, GameResult, graphics, timer};
-use ggez::event::{self, EventHandler};
-use ggez::input::keyboard::{self, KeyCode};
+use std::io::{self, Write};
+use std::time::{Duration, Instant};
+use std::thread;
 
 mod character;
 mod moves;
 mod sandevistan;
 
 use character::David;
+use moves::{Move, get_move_data};
 use sandevistan::Sandevistan;
 
-struct GameState {
-    david: David,
-    sandevistan: Sandevistan,
-}
+fn main() {
+    let mut david = David::new();
+    let mut sandevistan = Sandevistan::new();
+    let mut chrome_balance = 50.0; // Starting at 50%
 
-impl GameState {
-    fn new() -> GameResult<GameState> {
-        Ok(GameState {
-            david: David::new(),
-            sandevistan: Sandevistan::new(),
-        })
-    }
-}
+    loop {
+        print_game_state(&david, &sandevistan, chrome_balance);
+        let input = get_user_input();
 
-impl EventHandler for GameState {
-    fn update(&mut self, ctx: &mut Context) -> GameResult {
-        const DESIRED_FPS: u32 = 60;
-
-        while timer::check_update_time(ctx, DESIRED_FPS) {
-            let dt = 1.0 / (DESIRED_FPS as f32);
-
-            if keyboard::is_key_pressed(ctx, KeyCode::Space) {
-                self.sandevistan.activate();
-            }
-
-            let time_factor = if self.sandevistan.is_active() { 0.2 } else { 1.0 };
-            self.david.update(dt * time_factor);
-            self.sandevistan.update(dt);
+        match input.as_str() {
+            "1" => execute_move(&mut david, Move::Jab),
+            "2" => execute_move(&mut david, Move::DashAttack),
+            "3" => execute_move(&mut david, Move::SideSmash),
+            "4" => activate_sandevistan(&mut sandevistan),
+            "5" => execute_move(&mut david, Move::SideSpecial),
+            "6" => execute_move(&mut david, Move::UpSpecial),
+            "7" => {
+                chrome_balance = use_chrome_overload(chrome_balance);
+                david.apply_force(5.0); // Increase damage output
+            },
+            "q" => break,
+            _ => println!("Invalid input. Please try again."),
         }
 
-        Ok(())
-    }
+        // Update game state
+        david.update();
+        sandevistan.update(Duration::from_millis(16)); // Assuming 60 FPS
+        chrome_balance = update_chrome_balance(chrome_balance);
 
-    fn draw(&mut self, ctx: &mut Context) -> GameResult {
-        graphics::clear(ctx, graphics::Color::new(0.1, 0.2, 0.3, 1.0));
-
-        self.david.draw(ctx)?;
-
-        if self.sandevistan.is_active() {
-            // Draw Sandevistan effect
-            let rect = graphics::Rect::new(0.0, 0.0, 800.0, 600.0);
-            let sandevistan_overlay = graphics::Mesh::new_rectangle(
-                ctx,
-                graphics::DrawMode::fill(),
-                rect,
-                graphics::Color::new(0.9, 0.3, 0.3, 0.2),
-            )?;
-            graphics::draw(ctx, &sandevistan_overlay, graphics::DrawParam::default())?;
-        }
-
-        graphics::present(ctx)?;
-        Ok(())
+        thread::sleep(Duration::from_millis(16)); // Simulate game loop
     }
 }
 
-fn main() -> GameResult {
-    let cb = ggez::ContextBuilder::new("david_mod_prototype", "Cyberpunk Edgerunners");
-    let (ctx, event_loop) = &mut cb.build()?;
-    let state = &mut GameState::new()?;
-    event::run(ctx, event_loop, state)
+fn print_game_state(david: &David, sandevistan: &Sandevistan, chrome_balance: f32) {
+    println!("\nDavid's Moveset Prototype");
+    println!("-------------------------");
+    println!("Position: ({:.2}, {:.2})", david.position.x, david.position.y);
+    println!("Sandevistan: {}", if sandevistan.is_active() { "ACTIVE" } else { "Inactive" });
+    println!("Chrome Balance: {:.2}%", chrome_balance);
+    println!("\nAvailable moves:");
+    println!("1. Jab");
+    println!("2. Dash Attack");
+    println!("3. Side Smash");
+    println!("4. Sandevistan Burst");
+    println!("5. Cyber Dash (Side Special)");
+    println!("6. Mantis Blade Launch (Up Special)");
+    println!("7. Chrome Overload (Down Special)");
+    println!("q. Quit");
+    print!("\nEnter your move: ");
+    io::stdout().flush().unwrap();
+}
+
+fn get_user_input() -> String {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+    input.trim().to_string()
+}
+
+fn execute_move(david: &mut David, move_type: Move) {
+    let move_data = get_move_data(move_type);
+    println!("Executing {:?}", move_type);
+    println!("Damage: {}", move_data.damage);
+    println!("Knockback: ({:.2}, {:.2})", move_data.knockback.x, move_data.knockback.y);
+    david.apply_force(move_data.knockback.x);
+}
+
+fn activate_sandevistan(sandevistan: &mut Sandevistan) {
+    if sandevistan.activate() {
+        println!("Sandevistan activated!");
+    } else {
+        println!("Sandevistan is on cooldown.");
+    }
+}
+
+fn use_chrome_overload(current_balance: f32) -> f32 {
+    let new_balance = current_balance + 20.0;
+    println!("Using Chrome Overload!");
+    println!("Chrome Balance increased by 20%");
+    new_balance.min(100.0)
+}
+
+fn update_chrome_balance(current_balance: f32) -> f32 {
+    let new_balance = current_balance - 0.1;
+    new_balance.max(0.0)
 }

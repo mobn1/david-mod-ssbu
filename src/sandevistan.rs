@@ -1,46 +1,57 @@
+use std::time::Duration;
+
 pub struct Sandevistan {
     active: bool,
-    duration: f32,
-    cooldown: f32,
-    max_duration: f32,
-    max_cooldown: f32,
+    duration: Duration,
+    cooldown: Duration,
+    max_duration: Duration,
+    max_cooldown: Duration,
+    gauge: f32,
 }
 
 impl Sandevistan {
     pub fn new() -> Self {
         Sandevistan {
             active: false,
-            duration: 0.0,
-            cooldown: 0.0,
-            max_duration: 3.0,  // 3 seconds of active time
-            max_cooldown: 10.0, // 10 seconds cooldown
+            duration: Duration::from_secs(0),
+            cooldown: Duration::from_secs(0),
+            max_duration: Duration::from_secs(3),
+            max_cooldown: Duration::from_secs(10),
+            gauge: 100.0,
         }
     }
 
-    pub fn activate(&mut self) {
-        if self.cooldown == 0.0 {
+    pub fn activate(&mut self) -> bool {
+        if self.cooldown == Duration::from_secs(0) && self.gauge >= 30.0 {
             self.active = true;
             self.duration = self.max_duration;
+            self.gauge -= 30.0;
+            true
+        } else {
+            false
         }
     }
 
-    pub fn update(&mut self, dt: f32) {
+    pub fn update(&mut self, dt: Duration) {
         if self.active {
-            self.duration -= dt;
-            if self.duration <= 0.0 {
+            self.duration = self.duration.saturating_sub(dt);
+            if self.duration == Duration::from_secs(0) {
                 self.active = false;
-                self.duration = 0.0;
                 self.cooldown = self.max_cooldown;
             }
-        } else if self.cooldown > 0.0 {
-            self.cooldown -= dt;
-            if self.cooldown < 0.0 {
-                self.cooldown = 0.0;
-            }
+        } else if self.cooldown > Duration::from_secs(0) {
+            self.cooldown = self.cooldown.saturating_sub(dt);
         }
+
+        // Recharge the Sandevistan Gauge
+        self.gauge = (self.gauge + 0.5).min(100.0);
     }
 
     pub fn is_active(&self) -> bool {
         self.active
+    }
+
+    pub fn get_gauge(&self) -> f32 {
+        self.gauge
     }
 }

@@ -1,0 +1,9 @@
+/home/runner/SmashEdgeDavidMod/target/debug/deps/libcargo_platform-0265ed4787c81d7f.rmeta: /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/lib.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/cfg.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/error.rs
+
+/home/runner/SmashEdgeDavidMod/target/debug/deps/libcargo_platform-0265ed4787c81d7f.rlib: /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/lib.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/cfg.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/error.rs
+
+/home/runner/SmashEdgeDavidMod/target/debug/deps/cargo_platform-0265ed4787c81d7f.d: /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/lib.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/cfg.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/error.rs
+
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/lib.rs:
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/cfg.rs:
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo-platform-0.1.8/src/error.rs:

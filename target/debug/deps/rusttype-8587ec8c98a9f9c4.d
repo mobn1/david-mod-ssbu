@@ -1,0 +1,8 @@
+/home/runner/SmashEdgeDavidMod/target/debug/deps/librusttype-8587ec8c98a9f9c4.rmeta: /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/lib.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/font.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/geometry.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/outliner.rs
+
+/home/runner/SmashEdgeDavidMod/target/debug/deps/rusttype-8587ec8c98a9f9c4.d: /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/lib.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/font.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/geometry.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/outliner.rs
+
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/lib.rs:
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/font.rs:
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/geometry.rs:
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/rusttype-0.9.3/src/outliner.rs:
