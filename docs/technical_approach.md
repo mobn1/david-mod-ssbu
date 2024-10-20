@@ -16,34 +16,39 @@
 
 4. Integration with Existing Game Systems
    Challenge: Seamlessly integrating David's mechanics with existing Super Smash Bros Ultimate systems.
-   Solution: Carefully study the game's codebase and API, creating modular systems that hook into existing events and update loops.
+   Solution: Utilize ARCropolis mod and NROhook to facilitate the integration process and ensure compatibility with the game's existing systems.
 
 ## Implementation Steps
 
-1. Character Model and Animations
+1. Setup and Integration
+   - Install and configure ARCropolis mod
+   - Set up NROhook for runtime code execution
+   - Familiarize with the modding framework provided by ARCropolis
+
+2. Character Model and Animations
    - Create a high-poly 3D model of David
    - Develop a game-ready low-poly version with normal maps
    - Rig the model using a skeleton compatible with existing animations
    - Create custom animations for David's unique moves
 
-2. Gameplay Mechanics
-   - Implement the Sandevistan Gauge system
+3. Gameplay Mechanics
+   - Implement the Sandevistan Gauge system using ARCropolis hooks
    - Develop the Chrome Balance mechanic
    - Create custom hit detection and damage calculation for David's moves
 
-3. Special Effects
+4. Special Effects
    - Design and implement visual effects for Sandevistan activation
    - Create particle systems for cybernetic abilities and attacks
 
-4. UI Elements
+5. UI Elements
    - Design HUD elements for Sandevistan Gauge and Chrome Balance
-   - Implement UI update logic
+   - Implement UI update logic using ARCropolis's UI modification capabilities
 
-5. Sound Design
+6. Sound Design
    - Create or adapt sound effects for David's moves and abilities
    - Implement voice lines (if available) for taunts and victory screens
 
-6. Testing and Balancing
+7. Testing and Balancing
    - Develop a comprehensive test suite for David's mechanics
    - Conduct extensive playtesting and gather feedback
    - Iterate on design and balance based on test results
@@ -59,17 +64,18 @@
    - Substance Painter for advanced texture work
 
 3. Programming:
-   - C++ for main game logic modifications
-   - Lua for scripting game behavior (if supported by the modding framework)
+   - Rust for main game logic modifications
+   - ARCropolis mod for integration with Super Smash Bros Ultimate
+   - NROhook for runtime code execution and modification
 
 4. Modding Framework:
-   - Research and utilize existing Super Smash Bros Ultimate modding tools and frameworks
+   - ARCropolis as the primary modding framework for Super Smash Bros Ultimate
 
 5. Version Control:
    - Git for tracking changes and collaborating with other modders
 
 6. Testing:
    - Develop custom testing tools for rapid prototyping and balancing
-   - Utilize existing mod testing frameworks for Super Smash Bros Ultimate
+   - Utilize ARCropolis's debugging features for in-game testing
 
-By following this technical approach and addressing the identified challenges, we can create a high-quality mod that seamlessly integrates David from Cyberpunk Edgerunners into Super Smash Bros Ultimate.
+By following this updated technical approach and leveraging ARCropolis and NROhook, we can create a high-quality mod that seamlessly integrates David from Cyberpunk Edgerunners into Super Smash Bros Ultimate.

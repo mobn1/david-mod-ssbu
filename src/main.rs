@@ -1,19 +1,3 @@
-use skyline::nro::NroHookBuilder;
-use smash::lib::lua_const::*;
-
-mod ssbu_mod;
-mod character;
-mod moves;
-mod sandevistan;
-
-#[skyline::main(name = "david_mod")]
-pub fn main() {
-    println!("David Mod: Loaded");
-    
-    NroHookBuilder::new("common")
-        .after_init(ssbu_mod::david_init)
-        .before_frame(ssbu_mod::david_frame)
-        .add_hook(ssbu_mod::david_move)
-        .build()
-        .unwrap();
-}
+// This file is no longer needed for the ARCropolis mod integration.
+// The entry point is now handled by the nro_hook in lib.rs.
+// You can remove this file or keep it empty for future use.

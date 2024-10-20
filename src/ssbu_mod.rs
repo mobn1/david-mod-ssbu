@@ -22,12 +22,23 @@ static mut DAVID: Option<David> = None;
 static mut SANDEVISTAN: Option<Sandevistan> = None;
 static mut CHROME_BALANCE: f32 = 50.0;
 
-#[skyline::hook(offset = 0x37BAD0)]
-pub unsafe fn david_init(fighter: &mut L2CFighterCommon) {
-    if fighter.kind() == *FIGHTER_KIND_MARIO {  // Replace Mario with David
+pub fn init_david() {
+    unsafe {
         DAVID = Some(David::new());
         SANDEVISTAN = Some(Sandevistan::new());
         CHROME_BALANCE = 50.0;
+        println!("David Mod: David's initial state set");
+    }
+}
+
+#[skyline::hook(offset = 0x37BAD0)]
+pub unsafe fn david_init(fighter: &mut L2CFighterCommon) {
+    if fighter.kind() == *FIGHTER_KIND_MARIO {  // Replace Mario with David
+        println!("David Mod: Initializing David for fighter");
+        if let Some(david) = &mut DAVID {
+            // Set initial position, etc.
+            david.position = fighter.global_table[0x1].get_vec2();
+        }
     }
     call_original!(fighter)
 }
@@ -37,11 +48,14 @@ pub unsafe fn david_frame(fighter: &mut L2CFighterCommon) {
     if fighter.kind() == *FIGHTER_KIND_MARIO {  // Replace Mario with David
         if let Some(david) = &mut DAVID {
             david.update();
+            println!("David Mod: Updated David's position to {:?}", david.position);
         }
         if let Some(sandevistan) = &mut SANDEVISTAN {
             sandevistan.update(std::time::Duration::from_millis(16));
+            println!("David Mod: Sandevistan status: {}", if sandevistan.is_active() { "Active" } else { "Inactive" });
         }
         CHROME_BALANCE = update_chrome_balance(CHROME_BALANCE);
+        println!("David Mod: Chrome Balance updated to {:.2}", CHROME_BALANCE);
     }
     call_original!(fighter)
 }
@@ -50,6 +64,7 @@ pub unsafe fn david_frame(fighter: &mut L2CFighterCommon) {
 pub unsafe fn david_move(fighter: &mut L2CFighterCommon) {
     if fighter.kind() == *FIGHTER_KIND_MARIO {  // Replace Mario with David
         let status_kind = StatusModule::status_kind(fighter.module_accessor);
+        println!("David Mod: Processing move with status kind: {}", status_kind);
         match status_kind {
             // Basic attacks
             *FIGHTER_STATUS_KIND_ATTACK => execute_move(fighter, &Move::Jab),
@@ -95,6 +110,7 @@ pub unsafe fn david_move(fighter: &mut L2CFighterCommon) {
 }
 
 fn execute_move(fighter: &mut L2CFighterCommon, move_type: &Move) {
+    println!("David Mod: Executing move: {:?}", move_type);
     let move_data = get_move_data(move_type);
     if let Some(david) = &mut DAVID {
         david.apply_force(move_data.knockback.x);
@@ -127,6 +143,7 @@ fn execute_move(fighter: &mut L2CFighterCommon, move_type: &Move) {
 }
 
 fn activate_sandevistan(fighter: &mut L2CFighterCommon) {
+    println!("David Mod: Attempting to activate Sandevistan");
     if let Some(sandevistan) = &mut SANDEVISTAN {
         if sandevistan.activate() {
             // Implement Sandevistan effect in SSBU
@@ -149,6 +166,7 @@ fn activate_sandevistan(fighter: &mut L2CFighterCommon) {
 }
 
 fn use_chrome_overload(fighter: &mut L2CFighterCommon) {
+    println!("David Mod: Using Chrome Overload");
     CHROME_BALANCE = (CHROME_BALANCE + 20.0).min(100.0);
     // Implement Chrome Overload effect in SSBU
     AttackModule::set_power_up(fighter.module_accessor, 1.2);
@@ -174,7 +192,9 @@ fn use_chrome_overload(fighter: &mut L2CFighterCommon) {
 }
 
 fn update_chrome_balance(current_balance: f32) -> f32 {
-    (current_balance - 0.1).max(0.0)
+    let new_balance = (current_balance - 0.1).max(0.0);
+    println!("David Mod: Updated Chrome Balance from {:.2} to {:.2}", current_balance, new_balance);
+    new_balance
 }
 
 #[skyline::main(name = "david_mod")]
@@ -184,4 +204,5 @@ pub fn main() {
         david_frame,
         david_move
     );
+    init_david();
 }

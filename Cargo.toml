@@ -4,13 +4,15 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
+name = "david_mod"
 crate-type = ["cdylib"]
 
 [dependencies]
 nalgebra = "0.32.2"
-skyline = "0.2.1"
-smash = { git = "https://github.com/ultimate-research/skyline-smash.git" }
-smash_script = { git = "https://github.com/ultimate-research/skyline-smash.git" }
+lazy_static = "1.4.0"
+arcropolis-api = "0.1.0"
+nro-hook = "0.1.0"
+smash = { git = "https://github.com/ultimate-research/smash-rs.git" }
 
 [profile.dev]
 panic = "abort"
@@ -18,3 +20,4 @@ panic = "abort"
 [profile.release]
 panic = "abort"
 lto = true
+opt-level = 3

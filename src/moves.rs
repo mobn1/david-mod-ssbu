@@ -1,5 +1,6 @@
 use nalgebra as na;
 
+#[repr(C)]
 #[derive(Debug, Clone)]
 pub enum Move {
     Jab,
@@ -123,10 +124,10 @@ pub fn get_move_data(move_type: &Move) -> MoveData {
             recovery_frames: 28,
         },
         Move::SpecialNeutral => MoveData {
-            damage: 0.0, // Sandevistan activation
+            damage: 0.0,
             knockback: na::Vector2::new(0.0, 0.0),
             startup_frames: 1,
-            active_frames: 180, // 3 seconds at 60 FPS
+            active_frames: 180,
             recovery_frames: 60,
         },
         Move::SpecialSide => MoveData {
@@ -144,7 +145,7 @@ pub fn get_move_data(move_type: &Move) -> MoveData {
             recovery_frames: 20,
         },
         Move::SpecialDown => MoveData {
-            damage: -5.0, // Self-damage for Chrome Overload
+            damage: -5.0,
             knockback: na::Vector2::new(0.0, 0.0),
             startup_frames: 10,
             active_frames: 30,

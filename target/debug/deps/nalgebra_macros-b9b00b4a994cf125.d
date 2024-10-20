@@ -1,0 +1,7 @@
+/home/runner/SmashEdgeDavidMod/target/debug/deps/libnalgebra_macros-b9b00b4a994cf125.so: /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/nalgebra-macros-0.2.2/src/lib.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/nalgebra-macros-0.2.2/src/matrix_vector_impl.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/nalgebra-macros-0.2.2/src/stack_impl.rs
+
+/home/runner/SmashEdgeDavidMod/target/debug/deps/nalgebra_macros-b9b00b4a994cf125.d: /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/nalgebra-macros-0.2.2/src/lib.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/nalgebra-macros-0.2.2/src/matrix_vector_impl.rs /home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/nalgebra-macros-0.2.2/src/stack_impl.rs
+
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/nalgebra-macros-0.2.2/src/lib.rs:
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/nalgebra-macros-0.2.2/src/matrix_vector_impl.rs:
+/home/runner/SmashEdgeDavidMod/.local/share/.cargo/registry/src/index.crates.io-6f17d22bba15001f/nalgebra-macros-0.2.2/src/stack_impl.rs:
