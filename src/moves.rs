@@ -1,6 +1,6 @@
 use nalgebra as na;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum Move {
     Jab,
     DashAttack,
@@ -29,7 +29,7 @@ pub struct MoveData {
     pub recovery_frames: u32,
 }
 
-pub fn get_move_data(move_type: Move) -> MoveData {
+pub fn get_move_data(move_type: &Move) -> MoveData {
     match move_type {
         Move::Jab => MoveData {
             damage: 3.0,

@@ -1,5 +1,5 @@
 use std::io::{self, Write};
-use std::time::{Duration, Instant};
+use std::time::Duration;
 use std::thread;
 
 mod character;
@@ -20,12 +20,12 @@ fn main() {
         let input = get_user_input();
 
         match input.as_str() {
-            "1" => execute_move(&mut david, Move::Jab),
-            "2" => execute_move(&mut david, Move::DashAttack),
-            "3" => execute_move(&mut david, Move::SideSmash),
+            "1" => execute_move(&mut david, &Move::Jab),
+            "2" => execute_move(&mut david, &Move::DashAttack),
+            "3" => execute_move(&mut david, &Move::SmashSide),
             "4" => activate_sandevistan(&mut sandevistan),
-            "5" => execute_move(&mut david, Move::SideSpecial),
-            "6" => execute_move(&mut david, Move::UpSpecial),
+            "5" => execute_move(&mut david, &Move::SpecialSide),
+            "6" => execute_move(&mut david, &Move::SpecialUp),
             "7" => {
                 chrome_balance = use_chrome_overload(chrome_balance);
                 david.apply_force(5.0); // Increase damage output
@@ -68,7 +68,7 @@ fn get_user_input() -> String {
     input.trim().to_string()
 }
 
-fn execute_move(david: &mut David, move_type: Move) {
+fn execute_move(david: &mut David, move_type: &Move) {
     let move_data = get_move_data(move_type);
     println!("Executing {:?}", move_type);
     println!("Damage: {}", move_data.damage);
