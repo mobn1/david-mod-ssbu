@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <title>Stage Background</title>
+  <rect x="0" y="0" width="800" height="600" fill="#34495e" />
+  <rect x="0" y="500" width="800" height="100" fill="#2c3e50" />
+  <polygon points="400,0 350,100 450,100" fill="#f1c40f" />
+  <circle cx="700" cy="100" r="50" fill="#e74c3c" />
+  <circle cx="100" cy="100" r="50" fill="#3498db" />
+</svg>
