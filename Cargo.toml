@@ -1,7 +1,20 @@
 [package]
-name = "david_mod_prototype"
+name = "david_mod"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+crate-type = ["cdylib"]
+
 [dependencies]
 nalgebra = "0.32.2"
+skyline = "0.2.1"
+smash = { git = "https://github.com/ultimate-research/skyline-smash.git" }
+smash_script = { git = "https://github.com/ultimate-research/skyline-smash.git" }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+lto = true
