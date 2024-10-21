@@ -4,15 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
-name = "david_mod"
 crate-type = ["cdylib"]
 
 [dependencies]
-nalgebra = "0.32.2"
+# Remove smash, smashline, skyline, and arcropolis-api dependencies
 lazy_static = "1.4.0"
-arcropolis-api = "0.1.0"
-nro-hook = "0.1.0"
-smash = { git = "https://github.com/ultimate-research/smash-rs.git" }
+nalgebra = "0.32.2"
+
+# Add Unreal Engine 4 related dependencies (these are placeholder names, actual dependencies may vary)
+unreal_engine = { git = "https://github.com/EpicGames/UnrealEngine.git", branch = "4.27" }
+ue4_modding_framework = { git = "https://github.com/example/ue4_modding_framework.git" }
 
 [profile.dev]
 panic = "abort"

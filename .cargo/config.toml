@@ -1,0 +1,14 @@
+[net]
+git-fetch-with-cli = true
+
+[http]
+proxy = ""
+
+[https]
+proxy = ""
+
+[registries.crates-io]
+protocol = "sparse"
+
+[env]
+GITHUB_TOKEN = { value = "${GITHUB_TOKEN}", relative = false }

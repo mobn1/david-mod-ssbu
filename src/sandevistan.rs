@@ -21,6 +21,7 @@ impl Sandevistan {
         }
     }
 
+    #[allow(dead_code)]
     pub fn activate(&mut self) -> bool {
         if self.cooldown == Duration::from_secs(0) && self.gauge >= 30.0 {
             self.active = true;
@@ -51,6 +52,7 @@ impl Sandevistan {
         self.active
     }
 
+    #[allow(dead_code)]
     pub fn get_gauge(&self) -> f32 {
         self.gauge
     }
