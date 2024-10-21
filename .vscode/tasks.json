@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build DavidMod",
+            "type": "process",
+            "command": "C:/Program Files/Epic Games/UE_4.27/Engine/Build/BatchFiles/Build.bat",
+            "args": [
+                "DavidMod",
+                "Win64",
+                "Development",
+                "${workspaceFolder}/UnrealProject/DavidMod.uproject",
+                "-waitmutex"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        }
+    ]
+}
