@@ -29,6 +29,30 @@ Add Sandevistan activation animation
 - Add visual effects for Sandevistan activation
 ```
 
+### Using the git_commit.py Script
+
+To make regular commits and ensure consistency, use the `git_commit.py` script:
+
+1. Make your changes to the project files.
+2. Run the script with the following command:
+   ```
+   python git_commit.py <file1> [file2 ...] "Your commit message"
+   ```
+   Replace `<file1>`, `[file2 ...]` with the files you've changed, and provide a meaningful commit message.
+
+3. The script will stage the specified files, commit the changes with the provided message, and push to the remote repository.
+
+Example usage:
+```
+python git_commit.py src/character.rs src/moves.rs "Update David's move set and add Sandevistan effect"
+```
+
+By using this script, we ensure that all commits follow our guidelines and maintain a consistent commit history.
+
+## Testing the Commit Process
+
+This line is added to test our new git_commit.py script. It will be committed using the script to demonstrate its functionality.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
